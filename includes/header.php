@@ -1,4 +1,12 @@
-<?php include "includes/functions.php"; ?>
+<?php include "includes/functions.php";
+
+
+
+$users_count = db()->query("SELECT COUNT(id) FROM `users`")->fetchColumn();
+
+$link_count = db()->query("SELECT COUNT(id) FROM `links`")->fetchColumn();
+$views_count = db()->query("SELECT SUM(views) FROM `links`")->fetchColumn();
+?>
 
 <!doctype html>
 <html lang="ru">
@@ -35,4 +43,12 @@
       </div>
     </nav>
   </header>
-  <?php echo get_url(); ?>
+
+  <?php
+
+
+  // echo '<pre>';
+  // var_dump($users_count);
+  // echo '</pre>';
+
+  ?>
