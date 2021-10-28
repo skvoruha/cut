@@ -1,13 +1,16 @@
+<?php include "includes/functions.php"; ?>
+
 <!doctype html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport"
-				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 	<title>Cut your URL - 404 Not found</title>
 </head>
+
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,9 +39,13 @@
 			<div class="col">
 				<h1 class="text-center"><span class="badge bg-warning text-dark">Ошибка 404 - Страница не найдена!</span></h1>
 				<h2 class="text-center mt-5">Эта ссылка удалена или никогда не существовала</h2>
+				<a href="<?php echo get_url(); ?>" class="text-center mt-5 text-primary">
+					<h2>Назад</h2>
+				</a>
 			</div>
 		</div>
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </body>
+
 </html>
