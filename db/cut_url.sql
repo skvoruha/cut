@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 29 2021 г., 18:27
+-- Время создания: Окт 30 2021 г., 10:46
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.4.21
 
@@ -40,8 +40,9 @@ CREATE TABLE `links` (
 --
 
 INSERT INTO `links` (`id`, `user_id`, `long_link`, `short_link`, `views`) VALUES
-(1, 1, 'https://yandex.ru', 'asd', 16),
-(4, 2, 'https://google.ru', 'goo', 15);
+(18, 18, '12', 'bu4enc', 0),
+(19, 18, '8', '8v4ytm', 0),
+(35, 17, '345', 's5i82v', 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,8 @@ INSERT INTO `users` (`id`, `login`, `pass`) VALUES
 (14, '33', '$2y$10$A0XS7GNai0Eq4iZ6TVFkWeARUVVoBzuKDf7D7XVUDSLEXkwL6lo6S'),
 (15, '44', '$2y$10$LnnWjzYl7ASbcBSgQJyynOr935MRTgSgghPeJDSyyJ1A.epkB8kry'),
 (16, '55', '$2y$10$XHgEGpMPs3s0K.bSZXMZyOBsdV4TSlZbLt4rt52xHBaliNVHd2PBy'),
-(17, '333', '$2y$10$A7BjTeEoFvd5Ssxysddlyu6tlMbFlWOsOfVPSCRLhG64mj.TMiXRu');
+(17, '333', '$2y$10$A7BjTeEoFvd5Ssxysddlyu6tlMbFlWOsOfVPSCRLhG64mj.TMiXRu'),
+(18, 'eee', '$2y$10$VSko7FpCC6WsCXNduSHsiOPTH/L59McM9P0brZBWHw5Nj2.JHnT6W');
 
 --
 -- Индексы сохранённых таблиц
@@ -97,13 +99,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `links`
 --
 ALTER TABLE `links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

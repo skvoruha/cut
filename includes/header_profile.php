@@ -1,5 +1,5 @@
 <?php
-include "includes/functions.php";
+include_once "includes/functions.php";
 ?>
 
 <!doctype html>
@@ -31,8 +31,9 @@ include "includes/functions.php";
               <a class="nav-link active" href="<?php echo get_url("profile.php"); ?>">Профиль</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Ссылка" aria-label="Ссылка">
+          <form class="d-flex" action="includes/add.php" method="post">
+            <input class="form-control me-2" type="text" placeholder="Ссылка" aria-label="Ссылка" name="link">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
             <button class="btn btn-success" type="submit"><i class="bi bi-plus-lg"></i></button>
           </form>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

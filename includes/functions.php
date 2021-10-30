@@ -1,6 +1,6 @@
 <?php
 
-include "includes/config.php";
+include_once "config.php";
 
 function get_url($page = '')
 //$page = это пустая строка в функцию мы пердаем пустую строку
@@ -118,4 +118,28 @@ function login($auth_data)
     header('Location: login.php');
     die;
   }
+}
+function get_user_links($user_id)
+{
+  if (empty($user_id)) return [];
+  return db_query("SELECT * FROM `links` WHERE `user_id` = $user_id;")->fetchAll();
+}
+function delete_link($id)
+{
+  if (empty($id)) return false;
+  return db_query("DELETE FROM `links` WHERE `id` = $id", true);
+}
+//INSERT INTO `links` (`id`, `user_id`, `long_link`, `short_link`, `views`) VALUES (NULL, '17', '432432', '13', '0');
+function add_link($user_id, $link)
+{
+  $short_link = generate_string();
+
+  return db_query("INSERT INTO `links` (`id`, `user_id`, `long_link`, `short_link`, `views`) VALUES (NULL, '$user_id', '$link', '$short_link', '0')", true);
+}
+
+function generate_string($size = 6)
+{
+  $new_string = str_shuffle(URL_CHARS);
+  // ayerwbz мешает
+  return substr($new_string, 0, $size);
 }

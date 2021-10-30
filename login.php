@@ -1,6 +1,8 @@
-<?php include "includes/header.php";
+<?php include_once "includes/header.php";
 
-
+if (isset($_SESSION['user']['id'])) {
+	header('Location: profile.php');
+}
 
 $error = '';
 if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
@@ -18,9 +20,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && ($_POST['pass']) && !em
 	login($_POST);
 }
 
-if (isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id'])) {
-	header('Location: profile.php');
-}
+
 ?>
 <main class="container">
 	<?php

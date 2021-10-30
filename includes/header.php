@@ -1,4 +1,4 @@
-<?php include "includes/functions.php";
+<?php include_once "includes/functions.php";
 
 
 
@@ -33,7 +33,7 @@ $views_count = get_views_count();
               <a class="nav-link active" aria-current="page" href="<?php echo get_url(); ?>">Главная</a>
             </li>
             <?php
-            if (isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id'])) {
+            if (isset($_SESSION['user']['id'])) {
 
             ?>
               <li class="nav-item">

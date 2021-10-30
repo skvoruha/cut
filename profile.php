@@ -1,10 +1,13 @@
 <?php
-include "includes/header_profile.php";
+include_once "includes/header_profile.php";
 
-if (!isset($_SESSION['user']['id']) && empty($_SESSION['user']['id'])) {
+if (!isset($_SESSION['user']['id'])) {
 	header('Location: ../login.php');
 }
-
+$links = get_user_links($_SESSION['user']['id']);
+if (empty($links)) {
+	$_SESSION['error'] = "У вас отстуствуют ссылки";
+}
 $error = '';
 if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 	$error = $_SESSION['error'];
@@ -36,7 +39,9 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 			<?php echo $error ?>
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
-	<?php } ?>
+	<?php };
+
+	?>
 	<div class="row mt-5">
 		<table class="table table-striped">
 			<thead>
@@ -49,18 +54,30 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td><a href="https://ya.ru" target="_blank">https://ya.ru</a></td>
-					<td class="short-link">http://red.loc/kjjfdh</td>
-					<td>34</td>
-					<td>
-						<a href="#" class="btn btn-primary btn-sm copy-btn" title="Скопировать в буфер" data-clipboard-text="http://red.loc/kjjfdh"><i class="bi bi-files"></i></a>
-						<a href="#" class="btn btn-warning btn-sm" title="Редактировать"><i class="bi bi-pencil"></i></a>
-						<a href="#" class="btn btn-danger btn-sm" title="Удалить"><i class="bi bi-trash"></i></a>
-					</td>
-				</tr>
-				<tr>
+				<?php
+				if (empty($links)) {
+					$_SESSION['error'] = "У вас отстуствуют ссылки";
+					echo	var_dump($links);
+				}
+				foreach ($links as $key => $link) {
+				?>
+					<tr>
+						<th scope="row"><?php echo $key + 1; ?></th>
+						<td><a href="<?php echo $link['long_link']; ?>" target="_blank"><?php echo $link['long_link']; ?></a></td>
+						<td class="short-link"><?php echo get_url($link['short_link']); ?></td>
+						<td><?php echo $link['views']; ?></td>
+						<td>
+							<a href="#" class="btn btn-primary btn-sm copy-btn" title="Скопировать в буфер" data-clipboard-text="<?php echo get_url($link['short-link']); ?>"><i class="bi bi-files"></i></a>
+							<a href="<?php echo get_url('includes/edit.php?user_id=' . $_SESSION['user']['id'] . '&id=' . $link['id']); ?>" class="btn btn-warning btn-sm" title="Редактировать"><i class="bi bi-pencil"></i></a>
+							<a href="<?php echo get_url('includes/delete.php?id=' . $link['id']); ?>" class="btn btn-danger btn-sm" title="Удалить"><i class="bi bi-trash"></i></a>
+						</td>
+					</tr>
+
+				<?php
+				}
+
+				?>
+				<!-- <tr>
 					<th scope="row">2</th>
 					<td><a href="https://google.ru" target="_blank">https://google.ru</a></td>
 					<td class="short-link">http://red.loc/ke05nls</td>
@@ -70,8 +87,8 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 						<a href="#" class="btn btn-warning btn-sm" title="Редактировать"><i class="bi bi-pencil"></i></a>
 						<a href="#" class="btn btn-danger btn-sm" title="Удалить"><i class="bi bi-trash"></i></a>
 					</td>
-				</tr>
-				<tr>
+				</tr> -->
+				<!-- <tr>
 					<th scope="row">3</th>
 					<td><a href="https://vk.com" target="_blank">https://vk.com</a></td>
 					<td class="short-link">http://red.loc/jfiwms7</td>
@@ -81,7 +98,7 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 						<a href="#" class="btn btn-warning btn-sm" title="Редактировать"><i class="bi bi-pencil"></i></a>
 						<a href="#" class="btn btn-danger btn-sm" title="Удалить"><i class="bi bi-trash"></i></a>
 					</td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>
@@ -101,5 +118,5 @@ if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
 
 
 <?php
-include "includes/footer_profile.php";
+include_once "includes/footer_profile.php";
 ?>

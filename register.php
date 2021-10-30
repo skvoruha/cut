@@ -1,5 +1,5 @@
 <?php
-include "includes/header.php";
+include_once "includes/header.php";
 
 $error = '';
 if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
@@ -70,4 +70,4 @@ if (isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id'])) {
 		</div>
 	</div>
 </main>
-<?php include "includes/footer.php"; ?>
+<?php include_once "includes/footer.php"; ?>

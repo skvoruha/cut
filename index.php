@@ -1,4 +1,5 @@
 <?php
+include_once "includes/functions.php";
 if (isset($_GET['url']) && !empty($_GET['url'])) {
 	$url = strtolower(trim($_GET['url'])); //strtolower =  преобразует тот текст который нам передали в маленькие буквы trim = убирает лишние пробелы
 
@@ -11,7 +12,7 @@ if (isset($_GET['url']) && !empty($_GET['url'])) {
 	header('Location: ' . $link['long_link']);
 	die;
 }
-include "includes/header.php";
+include_once "includes/header.php";
 ?>
 <main class="container">
 	<?php
